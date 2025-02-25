@@ -28,7 +28,7 @@ public class TasksTest {
 
     @Test
     public void shouldReturnTrueIfQueryContainsInEpic() {
-        String[] subtasks = { "Молоко", "Яйца", "Хлеб" };
+        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
         Epic epic = new Epic(55, subtasks);
 
         boolean expected = true;
@@ -39,7 +39,7 @@ public class TasksTest {
 
     @Test
     public void shouldReturnFalseIfQueryContainsInEpic() {
-        String[] subtasks = { "Молоко", "Яйца", "Хлеб" };
+        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
         Epic epic = new Epic(55, subtasks);
 
         boolean expected = false;
@@ -48,7 +48,7 @@ public class TasksTest {
         Assertions.assertEquals(expected, actual);
     }
 
-    @Test
+    @Test  // Поиск по topic
     public void shouldReturnTrueIfQueryContainsInMeeting() {
         Meeting meeting = new Meeting(
                 555,
@@ -59,6 +59,21 @@ public class TasksTest {
 
         boolean expected = true;
         boolean actual = meeting.matches("версии");
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test  // Поиск по project
+    public void shouldReturnTrueIfQueryContainsInMeetingProject() {
+        Meeting meeting = new Meeting(
+                555,
+                "Выкатка 3й версии приложения",
+                "Приложение НетоБанка",
+                "Во вторник после обеда"
+        );
+
+        boolean expected = true;
+        boolean actual = meeting.matches("НетоБанка");
 
         Assertions.assertEquals(expected, actual);
     }
