@@ -26,4 +26,9 @@ public class Task {
     public int hashCode() {
         return Objects.hash(id);
     }
+
+    // Проверка, подходит ли задача поисковому запросу
+    public boolean matches(String query) {
+        return false;
+    }
 }
